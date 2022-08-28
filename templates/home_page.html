@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static '/bootstrap/bootstrap.min.css' %}">
+	<script type="text/javascript" src="{% static '/bootstrap/bootstrap.min.js' %}"></script>
+	<title>Home Page</title>
+</head>
+<body>
+	<div class="container-fluid my-1 mt-2 text-center">
+		<form method="post">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button class="btn btn-primary" type="submit">Send Data</button>
+		</form>
+		<table align="center" border="1" cellpadding="10px" class="mt-4">
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+		</tr>
+		{% for x in md %}
+		<tr>
+			<td>{{x.name}}</td>
+			<td>{{x.email}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	</div>
+</body>
+</html>
